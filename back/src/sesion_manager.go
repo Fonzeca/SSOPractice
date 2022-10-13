@@ -25,16 +25,25 @@ func SaveSession(user model.UserView) (string, error) {
 
 	guid := uuid.New()
 
+	fmt.Println("Intent of deleting")
+	var keytoDelete string = ""
 	//Borramos la sesion duplicada de la cache
 	cache.Foreach(func(key interface{}, item *cache2go.CacheItem) {
+		if keytoDelete != "" {
+			return
+		}
 		userInCache := item.Data().(model.UserView)
 
+		fmt.Println("iteration")
 		if userInCache.Email == user.Email && userInCache.LoginType == user.LoginType {
-			cache.Delete(key)
-			fmt.Println("Deleting cache")
+			keytoDelete = key.(string)
 			return
 		}
 	})
+
+	if keytoDelete != "" {
+		cache.Delete(keytoDelete)
+	}
 
 	cache.Add(guid.String(), ttl, user)
 
