@@ -4,7 +4,8 @@
 El desarrollo de un micro que integre un SSO contra cuentas de gmail y facebook, capture los datos básicos del user, solicite autorización y mantenga una sesión abierta. Deberá de realizar desconexión automática pasados 15 min sin actividad el usuario o si inicia sesión en otro browser o dispositivo.
 
 ### Proyecto
-Lo que se hizo fue un microsevicio en golang, y un sitio web en Angular 13 para consumir este.
+Lo que se hizo fue un microsevicio en golang, y un sitio web en Angular 13 para consumir este. 
+Me llevo 8 horas de desarrollo.
 
 ### Configuracion
 En la carpeta "configs" estan los archivos de configuracion.
