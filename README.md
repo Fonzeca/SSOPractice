@@ -12,7 +12,8 @@ En la carpeta "configs" estan los archivos de configuracion.
  - **environment.prod.ts**: configuracion del sitio web, solo se usa para setear la url del microservicio.
  - **nginx.conf y mime.types**: son archivos config de nginx, por si quieren hacerle deploy con docker.
 
-Hay ejemplos de las archivos de configuracion.
+Por seguridad, no deje el config.json en el repositorio, si lo necesitan, envienme un email solicitandolo. Lo que si hay es un ejemplo: config.example.json
+
 
 ### Deploy
 Les deje un docker-compose-yaml para que puedan hacerle deploy facilmente.

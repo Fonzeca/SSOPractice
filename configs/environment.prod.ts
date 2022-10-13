@@ -2,5 +2,5 @@
 
 export const environment = {
     production: true,
-    host: "site:3232"
+    host: "http://vps-1791261-x.dattaweb.com:3232"
   };
