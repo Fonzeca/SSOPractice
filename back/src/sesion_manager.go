@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"time"
 
 	"github.com/Fonzeca/SSOPractice/src/model"
@@ -30,6 +31,8 @@ func SaveSession(user model.UserView) (string, error) {
 
 		if userInCache.Email == user.Email && userInCache.LoginType == user.LoginType {
 			cache.Delete(key)
+			fmt.Println("Deleting cache")
+			return
 		}
 	})
 
