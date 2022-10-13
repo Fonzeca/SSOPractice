@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { UserView } from './model/user-view';
 
 @Injectable({
@@ -9,7 +10,7 @@ export class ApiBackService {
 
   constructor(private http: HttpClient) { }
   
-  host = "http://localhost:3000";
+  host = environment.host;
 
 
   googleLogin(){

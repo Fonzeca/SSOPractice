@@ -6,21 +6,23 @@ services:
       - "2563:80"
     container_name: sso-front
     build: 
-      context: ./front/SSOPractice
+      context: ./
+      dockerfile: ./front/SSOPractice/Dockerfile
       args:
         - SCRIPT=build
     depends_on:
       - sso-back
     volumes: 
       - ./configs:/etc/nginx:ro
-    network_mode: "host"
 
   sso-back:
     build: ./back
     container_name: sso-back
+    volumes:
+      - ./configs:/app
     env_file:
       - ./back/.env
     ports:
-      - "3232:3232"
+      - "3232:3000"
 
 

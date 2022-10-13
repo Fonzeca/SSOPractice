@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, Subscription, tap } from 'rxjs';
+import { Router } from '@angular/router';
+import { catchError, interval, Subscription, tap } from 'rxjs';
 import { ApiBackService } from '../api-back.service';
 import { UserView } from '../model/user-view';
 
@@ -28,7 +29,7 @@ export class ProfileComponent implements OnInit {
   public hoursToDday: number | undefined;
   public daysToDday: number | undefined;
 
-  constructor(private api: ApiBackService) { }
+  constructor(private api: ApiBackService, private router : Router) { }
 
   ngOnInit(): void {
 
@@ -41,6 +42,9 @@ export class ProfileComponent implements OnInit {
   private getTimeDifference() {
     this.timeDifference = this.dDay.getTime() - new Date().getTime();
     this.allocateTimeUnits(this.timeDifference);
+    if(this.timeDifference <= 0){
+      this.router.navigate(['/login']);
+    }
   }
   private allocateTimeUnits(timeDifference: number) {
     this.secondsToDday = Math.floor((timeDifference) / (this.milliSecondsInASecond) % this.SecondsInAMinute);
@@ -53,6 +57,10 @@ export class ProfileComponent implements OnInit {
       tap((v) => {
         this.user = v;
         this.dDay = new Date(this.user.expires);
+      }),
+      catchError((err) => {
+        this.router.navigate(['/login']);
+        return err
       })
     ).subscribe();
   }

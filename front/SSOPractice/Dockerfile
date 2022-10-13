@@ -5,11 +5,12 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-COPY package.json /app
+COPY ./front/SSOPractice/package.json /app
 
 RUN npm install
 
-COPY . /app
+COPY ./front/SSOPractice /app
+COPY ./configs/environment.prod.ts /app/src/environments/environment.prod.ts
 
 ARG SCRIPT
 
