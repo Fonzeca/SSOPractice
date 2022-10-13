@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<body>
+    <div id="container">
+        <div id="profilecontainer">
+            <div id="part1" class="column">
+                <img id="person" src={{user?.photoUrl}}>
+                <p id="name">{{user?.name}}</p>
+                <a href="#" [hidden]="user?.login_type != 'facebook'"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="#" [hidden]="user?.login_type != 'google'"><i class="fab fa-google-plus-g fa-lg"></i></a>
+                <button id="follow" (click)="interact()">INTERACT</button>
+            </div>
+            <div id="part2">
+                <h4> Session expires in: </h4>
+                <div>
+                    <span id="hours"> {{hoursToDday}} </span>Hrs 
+                    <span id="minutes"> {{minutesToDday}} </span>Min
+                    <span id="seconds"> {{secondsToDday}} </span>S
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+
+  sso-front:
+    ports:
+      - "2563:80"
+    container_name: sso-front
+    build: 
+      context: .front/SSOPractice
+      args:
+        - SCRIPT=build
+    depends_on:
+      - sso-back
+    volumes: 
+      - ./configs:/etc/nginx:ro
+    network_mode: "host"
+
+  sso-back:
+    build: ./back
+    container_name: sso-back
+    env_file:
+      - ./back/.env
+    ports:
+      - "3232:3232"
+
+

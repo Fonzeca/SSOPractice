@@ -1,0 +1,15 @@
+{
+    "allowed-origins" : ["SITE.COM"],
+    "ttl-session" : 5,
+    "redirect-callback" : "SITE.COM/auth",
+    "google" : {
+        "client_id" : "client_id",
+        "client_secret" :"client_secret",
+        "scopes" : ["scope1","scope2","scope3"]
+    },
+    "facebook" : {
+        "client_id" : "client_id",
+        "client_secret" :"client_secret",
+        "scopes" : ["scope1","scope2","scope3"]
+    }
+}
