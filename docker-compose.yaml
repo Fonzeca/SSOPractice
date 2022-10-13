@@ -6,7 +6,7 @@ services:
       - "2563:80"
     container_name: sso-front
     build: 
-      context: .front/SSOPractice
+      context: ./front/SSOPractice
       args:
         - SCRIPT=build
     depends_on:
